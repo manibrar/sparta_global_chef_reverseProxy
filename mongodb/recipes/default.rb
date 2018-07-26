@@ -11,12 +11,12 @@ package 'nginx'
 
 service 'nginx' do
   supports status: true, restart: true, reload: true
-  action [ :enable, :start ]
+  action [ :start, :enable ]
 end
 
 template '/etc/nginx/sites-available/proxy.conf' do
   source 'proxy.conf.erb'
-  variables proxy_port: node['nginx']['proxy_port']
+  variables proxy_port: 3000
   notifies :restart, 'service[nginx]'
 end
 

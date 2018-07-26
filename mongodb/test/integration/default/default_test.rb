@@ -16,3 +16,12 @@ end
 describe port(80), :skip do
   it { should_not be_listening }
 end
+
+describe http("http://localhost") do
+  its('status') { should cmp 502 }
+end
+
+describe package ('mongodb') do
+  it { should be_installed }
+  # its('version') { should cmp > '8.11.2'}
+end
