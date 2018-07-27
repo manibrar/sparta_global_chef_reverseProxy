@@ -18,12 +18,10 @@ platforms:
       box: ubuntu/xenial64
 
 suites:
-  - name: default
+  - name: mongodb
     run_list:
-      - recipe[mongodb::default]
       - recipe[mongodb::mongodb]
     verifier:
       inspec_tests:
-        - test/integration/default
         - test/integration/mongodb
     attributes:
